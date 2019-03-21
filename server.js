@@ -3,6 +3,8 @@ var express = require('express'); //引入express
 var app = express();
 var mongojs = require('mongojs');
 var db = mongojs('contactList', ['contactList']);
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 //路由部分
@@ -33,7 +35,9 @@ app.get('/contactList', function (req, res) {
 app.post(function (req, res) {
     console.log("this is a post request");
     console.log(req.body);
-    db
+    db.contactList.insert(req.body,function(err,doc){   //用到了req.body,所以必须要引入body-parser模块
+        res.json(doc);
+    })
 })
 
 
