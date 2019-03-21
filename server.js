@@ -40,6 +40,16 @@ app.post(function (req, res) {  //插入记录
     })
 })
 
+app.delete('contactlist/:id',function(req,res){ //删除路由
+    var id = req.params.id;
+    console.log(id);
+    db.contactList.remove({_id:mongojs.ObjectId(id)},function(err,res){
+        res.json(res);
+    })
+})
+
+
+
 
 app.listen(3000); //监听3000端口
 console.log("server running on port 3000"); //提示运行成功
