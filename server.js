@@ -22,7 +22,7 @@ app.get('/contactList',function(req,res){
         numberL:888888
     }
     var contactList = [person1,person2,person3];
-    res.json(contactList);
+    res.json(contactList);  //请求后返回一个json对象
 });
 
 app.listen(3000);   //监听3000端口
