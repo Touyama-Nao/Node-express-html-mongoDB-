@@ -32,7 +32,7 @@ app.get('/contactList', function (req, res) {
     var contactList = [person1, person2, person3];
     res.json(contactList); //请求后返回一个json对象 */
 });
-app.post(function (req, res) {
+app.post(function (req, res) {  //插入记录
     console.log("this is a post request");
     console.log(req.body);
     db.contactList.insert(req.body,function(err,doc){   //用到了req.body,所以必须要引入body-parser模块
